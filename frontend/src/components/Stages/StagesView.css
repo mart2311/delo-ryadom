@@ -1,0 +1,251 @@
+.stages-view {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--border-color);
+}
+
+.stages-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stages-view-switch {
+  display: inline-flex;
+  background: var(--light-bg);
+  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.switch-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.switch-btn.active {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-orange));
+  transition: width 0.3s ease;
+}
+
+.stages-progress-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.stages-progress-line .progress-bar {
+  flex: 1;
+}
+
+.stages-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.stages-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 700px;
+}
+
+.stages-table th {
+  background: var(--light-bg);
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stages-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: top;
+}
+
+.stage-row.stage-done {
+  opacity: 0.7;
+}
+
+.stage-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stage-desc {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.stage-actual {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.stage-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stage-status-pending {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
+
+.stage-status-in_progress {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--primary-blue);
+}
+
+.stage-status-done {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--primary-green);
+}
+
+.gantt-wrap {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  background: var(--light-bg);
+}
+
+.gantt-axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  padding-left: 180px;
+}
+
+.gantt-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gantt-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.gantt-row-label {
+  font-size: 13px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gantt-row-track {
+  position: relative;
+  height: 28px;
+  background: var(--card-bg);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 4px;
+  height: 20px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.gantt-bar-planned {
+  background: rgba(37, 99, 235, 0.4);
+  border: 1px solid var(--primary-blue);
+}
+
+.gantt-bar-planned.stage-done {
+  background: rgba(16, 185, 129, 0.5);
+  border-color: var(--primary-green);
+}
+
+.gantt-bar-planned.stage-in_progress {
+  background: rgba(245, 158, 11, 0.5);
+  border-color: #f59e0b;
+}
+
+.gantt-bar-actual {
+  top: 12px;
+  height: 8px;
+  background: var(--primary-orange);
+  opacity: 0.8;
+}
+
+.gantt-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  align-items: center;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 8px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.legend-planned {
+  background: rgba(37, 99, 235, 0.4);
+  border: 1px solid var(--primary-blue);
+}
+
+.legend-actual {
+  background: var(--primary-orange);
+}
+
+@media (max-width: 768px) {
+  .gantt-row {
+    grid-template-columns: 120px 1fr;
+  }
+  .gantt-axis {
+    padding-left: 130px;
+  }
+}

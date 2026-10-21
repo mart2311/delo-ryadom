@@ -1,0 +1,87 @@
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-orange), var(--primary-green));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  stroke: var(--primary-blue);
+  fill: none;
+  stroke-width: 2;
+}
+
+.feature-card:nth-child(2) .feature-icon {
+  stroke: var(--primary-green);
+}
+
+.feature-card:nth-child(3) .feature-icon {
+  stroke: var(--primary-orange);
+}
+
+.feature-card h3 {
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+}

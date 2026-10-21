@@ -1,0 +1,149 @@
+.info-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.info-content {
+  padding: 40px;
+}
+
+.info-content h2 {
+  font-size: 28px;
+  color: var(--text-primary);
+  margin-top: 32px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.info-content h3 {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.info-content p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.info-content ul {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.info-content li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.info-content li strong {
+  color: var(--text-primary);
+}
+
+.last-updated {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.contact-methods {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: var(--light-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  stroke: var(--primary-blue);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.contact-item h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.contact-item p {
+  margin: 4px 0;
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+.contact-description {
+  color: var(--text-secondary) !important;
+  font-size: 14px !important;
+}
+
+.feedback-form {
+  background: var(--light-bg);
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.feedback-form h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.legal-notice {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--light-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.legal-notice p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.legal-notice strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .info-content {
+    padding: 24px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-icon {
+    margin: 0 auto;
+  }
+}

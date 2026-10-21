@@ -1,0 +1,128 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-bg);
+}
+
+.header {
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--primary-blue);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--primary-orange);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-orange));
+  transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--text-primary);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 0;
+}
+
+.footer {
+  background: var(--card-bg);
+  padding: 32px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-blue);
+}
+
+.footer p {
+  margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

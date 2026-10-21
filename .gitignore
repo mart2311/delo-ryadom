@@ -1,0 +1,35 @@
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+# Frontend
+node_modules/
+dist/
+# Private runtime data
+media/
+uploads/
+*.sqlite3
+*.db
+*.sql
+*.dump
+*.backup
+*.log
+# Editor and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local verification tools and package caches
+.verification/
+.pnpm-store/

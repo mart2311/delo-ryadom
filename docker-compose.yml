@@ -1,0 +1,95 @@
+networks:
+  app_net:
+    driver: bridge
+
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - app_net
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - SECRET_KEY=${SECRET_KEY}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DEBUG=${DEBUG}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    networks:
+      - app_net
+
+  fastapi:
+    build: ./fastapi_service
+    command: uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+    volumes:
+      - ./fastapi_service:/app
+    ports:
+      - "127.0.0.1:8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - SECRET_KEY=${SECRET_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    networks:
+      - app_net
+
+  frontend:
+    build: ./frontend
+    command: npm run dev -- --host
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "127.0.0.1:5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - VITE_WS_URL=ws://localhost:8001
+    depends_on:
+      - backend
+      - fastapi
+    networks:
+      - app_net
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "127.0.0.1:80:80"
+    depends_on:
+      - backend
+      - fastapi
+      - frontend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - app_net
+
+volumes:
+  postgres_data:
